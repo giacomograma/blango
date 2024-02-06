@@ -56,7 +56,10 @@ class Dev(Configuration):
         "handlers": ["console"],
         "level": "DEBUG",
     },
-}  
+  }  
+
+  
+
   # Build paths inside the project like this: BASE_DIR / 'subdir'.
   BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -70,7 +73,7 @@ class Dev(Configuration):
   # SECURITY WARNING: don't run with debug turned on in production!
   DEBUG = values.BooleanValue(True)
 
-  ALLOWED_HOSTS = ['stuartdinner-nurseoptic-8000.codio.io', 'localhost', '127.0.0.1', 'lindamedusa-silicontoast-8000.codio.io']
+  ALLOWED_HOSTS = ['hobbynorth-hellocycle-8000.codio.io', 'localhost', '127.0.0.1', 'lindamedusa-silicontoast-8000.codio.io']
   X_FRAME_OPTIONS = 'ALLOW-FROM ' + os.environ.get('CODIO_HOSTNAME') + '-8000.codio.io'
   CSRF_COOKIE_SAMESITE = None
   CSRF_TRUSTED_ORIGINS = ['https://' + os.environ.get('CODIO_HOSTNAME') + '-8000.codio.io']
@@ -137,7 +140,7 @@ class Dev(Configuration):
       "ALTERNATIVE_DATABASE_URL",
       default=f"sqlite:///{BASE_DIR}/alternative_db.sqlite3",
   ),
-}
+  }
 
 
   # Password validation
@@ -188,3 +191,9 @@ class Prod(Dev):
   SECRET_KEY = values.SecretValue()
 
 
+PASSWORD_HASHERS = [
+      'django.contrib.auth.hashers.Argon2PasswordHasher',
+      'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+      'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+      'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+  ]
