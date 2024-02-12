@@ -73,7 +73,7 @@ class Dev(Configuration):
   # SECURITY WARNING: don't run with debug turned on in production!
   DEBUG = values.BooleanValue(True)
 
-  ALLOWED_HOSTS = ['hobbynorth-hellocycle-8000.codio.io', 'localhost', '127.0.0.1', 'lindamedusa-silicontoast-8000.codio.io']
+  ALLOWED_HOSTS = ['energyweekend-exoduspierre-8000.codio.io', 'localhost', '127.0.0.1', 'lindamedusa-silicontoast-8000.codio.io']
   X_FRAME_OPTIONS = 'ALLOW-FROM ' + os.environ.get('CODIO_HOSTNAME') + '-8000.codio.io'
   CSRF_COOKIE_SAMESITE = None
   CSRF_TRUSTED_ORIGINS = ['https://' + os.environ.get('CODIO_HOSTNAME') + '-8000.codio.io']
