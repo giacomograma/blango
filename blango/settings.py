@@ -73,7 +73,7 @@ class Dev(Configuration):
   # SECURITY WARNING: don't run with debug turned on in production!
   DEBUG = values.BooleanValue(True)
 
-  ALLOWED_HOSTS = ['energyweekend-exoduspierre-8000.codio.io', 'localhost', '127.0.0.1', 'lindamedusa-silicontoast-8000.codio.io']
+  ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'oscarcannon-caravanlocal-8000.codio.io']
   X_FRAME_OPTIONS = 'ALLOW-FROM ' + os.environ.get('CODIO_HOSTNAME') + '-8000.codio.io'
   CSRF_COOKIE_SAMESITE = None
   CSRF_TRUSTED_ORIGINS = ['https://' + os.environ.get('CODIO_HOSTNAME') + '-8000.codio.io']
@@ -95,6 +95,7 @@ class Dev(Configuration):
       'blog',
       'crispy_forms',
       'crispy_bootstrap5',
+      'debug_toolbar',
   ]
 
   CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
@@ -108,7 +109,10 @@ class Dev(Configuration):
       'django.contrib.auth.middleware.AuthenticationMiddleware',
       'django.contrib.messages.middleware.MessageMiddleware',
       #  'django.middleware.clickjacking.XFrameOptionsMiddleware',
+      'debug_toolbar.middleware.DebugToolbarMiddleware',
   ]
+  
+  INTERNAL_IPS = ["192.168.10.93"]
 
   ROOT_URLCONF = 'blango.urls'
 
