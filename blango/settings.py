@@ -73,7 +73,7 @@ class Dev(Configuration):
   # SECURITY WARNING: don't run with debug turned on in production!
   DEBUG = values.BooleanValue(True)
 
-  ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'oscarcannon-caravanlocal-8000.codio.io']
+  ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'sonarcabinet-pastelvoice-8000.codio.io']
   X_FRAME_OPTIONS = 'ALLOW-FROM ' + os.environ.get('CODIO_HOSTNAME') + '-8000.codio.io'
   CSRF_COOKIE_SAMESITE = None
   CSRF_TRUSTED_ORIGINS = ['https://' + os.environ.get('CODIO_HOSTNAME') + '-8000.codio.io']
@@ -82,7 +82,7 @@ class Dev(Configuration):
   CSRF_COOKIE_SAMESITE = 'None'
   SESSION_COOKIE_SAMESITE = 'None'
 
-
+  AUTH_USER_MODEL = "blango_auth.User"
   # Application definition
 
   INSTALLED_APPS = [
@@ -96,6 +96,7 @@ class Dev(Configuration):
       'crispy_forms',
       'crispy_bootstrap5',
       'debug_toolbar',
+      'blango_auth',
   ]
 
   CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
